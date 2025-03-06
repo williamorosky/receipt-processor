@@ -23,7 +23,7 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
     # Return a 400 Bad Request following the API spec.
     return JSONResponse(
         status_code=400,
-        content={"detail": "The receipt is invalid."},
+        content={"description": "The receipt is invalid."},
     )
 
 
@@ -35,13 +35,13 @@ async def generic_exception_handler(request: Request, exc: Exception):
     if request.url.path.startswith("/receipts/process"):
         return JSONResponse(
             status_code=400,
-            content={"detail": "The receipt is invalid."},
+            content={"description": "The receipt is invalid."},
         )
     # Otherwise, for other endpoints, return a generic 500 error.
     return JSONResponse(
         status_code=500,
         content={
-            "detail": "Internal Server Error."
+            "description": "Internal Server Error."
         },
     )
 

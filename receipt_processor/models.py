@@ -1,3 +1,5 @@
+from datetime import date, time
+
 from pydantic import BaseModel, Field
 from typing import List
 
@@ -24,15 +26,13 @@ class Receipt(BaseModel):
         description="The name of the retailer or store the receipt is from.",
         examples=["M&M Corner Market"]
     )
-    purchaseDate: str = Field(
+    purchaseDate: date = Field(
         ...,
-        pattern=r"^\d{4}-\d{2}-\d{2}$",
         description="The date of the purchase printed on the receipt (Format: YYYY-MM-DD).",
         examples=["2022-01-01"]
     )
-    purchaseTime: str = Field(
+    purchaseTime: time = Field(
         ...,
-        pattern=r"^(?:[01]\d|2[0-3]):[0-5]\d$",
         description="The time of the purchase printed on the receipt in 24-hour format (HH:MM).",
         examples=["13:01"]
     )

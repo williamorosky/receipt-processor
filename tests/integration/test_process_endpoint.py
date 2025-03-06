@@ -6,7 +6,7 @@ client = TestClient(app)
 
 
 @pytest.mark.parametrize("receipt_data", [
-    # Valid example 1: Target receipt
+    # Valid example: Target receipt
     {
         "retailer": "Target",
         "purchaseDate": "2022-01-02",
@@ -20,7 +20,7 @@ client = TestClient(app)
             {"shortDescription": "Klarbrunn 12-PK 12 FL OZ", "price": "12.00"},
         ]
     },
-    # Valid example 2: M&M Corner Market receipt
+    # Valid example: M&M Corner Market receipt
     {
         "retailer": "M&M Corner Market",
         "purchaseDate": "2022-03-20",

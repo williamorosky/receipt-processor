@@ -1,7 +1,7 @@
-import math
 import pytest
-from receipt_processor.models import Receipt, Item
-from receipt_processor.services import calculate_points, ReceiptPointsCalculator
+
+from receipt_processor.models import Receipt
+from receipt_processor.services import ReceiptPointsCalculator
 
 
 @pytest.mark.parametrize("receipt_data, expected_points", [

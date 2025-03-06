@@ -8,7 +8,7 @@ client = TestClient(app)
 
 
 def test_get_points_valid_receipt():
-    # First, create a valid receipt via the POST endpoint.
+    # First create a valid receipt via the POST endpoint.
     receipt_data = {
         "retailer": "Target",
         "purchaseDate": "2022-01-02",
@@ -27,7 +27,7 @@ def test_get_points_valid_receipt():
     receipt_id = response_post.json().get("id")
     assert receipt_id is not None
 
-    # Now, retrieve points using the GET endpoint.
+    # Retrieve points using the GET endpoint.
     response_get = client.get(f"/receipts/{receipt_id}/points")
     assert response_get.status_code == 200
     data = response_get.json()

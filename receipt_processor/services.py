@@ -71,24 +71,18 @@ class ReceiptPointsCalculator:
 
     def calculate_date_points(self) -> int:
         """6 points if the day in the purchase date is odd."""
-        try:
-            purchase_date = datetime.strptime(self.receipt.purchaseDate, "%Y-%m-%d")
-            if purchase_date.day % 2 == 1:
-                logger.debug("Added 6 points for odd purchase day (%d).", purchase_date.day)
-                return 6
-        except ValueError as e:
-            logger.error("Error parsing purchaseDate '%s': %s", self.receipt.purchaseDate, e)
+        day = self.receipt.purchaseDate.day
+        if day % 2 == 1:
+            logger.debug("Added 6 points for odd purchase day (%d).", day)
+            return 6
         return 0
 
     def calculate_time_points(self) -> int:
         """10 points if the purchase time is after 2:00pm and before 4:00pm."""
-        try:
-            purchase_time = datetime.strptime(self.receipt.purchaseTime, "%H:%M")
-            if 14 <= purchase_time.hour < 16:
-                logger.debug("Added 10 points for purchase time bonus (hour: %d).", purchase_time.hour)
-                return 10
-        except ValueError as e:
-            logger.error("Error parsing purchaseTime '%s': %s", self.receipt.purchaseTime, e)
+        hour = self.receipt.purchaseTime.hour
+        if 14 <= hour < 16:
+            logger.debug("Added 10 points for purchase time bonus (hour: %d).", hour)
+            return 10
         return 0
 
     def calculate_points(self) -> int:
