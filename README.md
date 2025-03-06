@@ -43,3 +43,9 @@ curl --location 'http://127.0.0.1:8000/receipts/process' \
     ]
 }'
 ```
+
+Then, if you want to get the score of the receipt run this:
+```bash
+curl --location 'http://127.0.0.1:8000/receipts/{ID_FROM_PREVIOUS_RESPONSE}/points'
+```
+and replace `{ID_FROM_PREVIOUS_RESPONSE}` with the value from the `id` return in either of the previous receipt processing requests.
